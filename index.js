@@ -66,9 +66,8 @@ app.use((req,res,next)=>{
             filename:"logs/success.log"
         })
     ]
-}));*/
-
-
+}));
+*/
 //路由
 routes(app);
 
@@ -91,8 +90,13 @@ app.use(function (err,req,res,next) {
     res.render("error",{error:err});
 })
 // 监听端口，启动程序
-app.listen(config.port,() => {
+if (module.parent) {
+  module.exports = app;
+} else {
+  // 监听端口，启动程序
+  app.listen(config.port, function () {
     console.log(`${pkg.name} listening on port ${config.port}`);
-});
+  });
+}
 
 //supervisor --harmony index
