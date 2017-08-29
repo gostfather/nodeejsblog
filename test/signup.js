@@ -35,7 +35,7 @@ describe('signup', function() {
         .catch(done);
     });
 
-    // 用户名错误的情况
+    // 名户名错误的情况
     it('wrong name', function(done) {
       agent
         .post('/signup')
